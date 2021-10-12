@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "webV",
+    "slug": "webV",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "webV"
+}
