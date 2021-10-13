@@ -5,7 +5,7 @@ import { MediaStream, RTCView } from 'react-native-webrtc'
 import Button from './Button'
 
 interface Props {
-    hanup: () => void;
+    hangup: () => void;
     localStream?: MediaStream | null;
     remoteStream?: MediaStream | null;
 }
@@ -15,7 +15,7 @@ function ButtonContainer(props: Props){
         <Button
             iconName='phone'
             backgroundColor='red'
-            onPress={props.hanup}
+            onPress={props.hangup}
         />
     </View>
 }
@@ -28,7 +28,7 @@ export default function Video(props: Props) {
                 streamURl={props.localStream.toURL()} 
                 objectFir={'cover'}
                 style={styles.video}/>
-            <ButtonContainer hanup={props.hanup}/>
+            <ButtonContainer hangup={props.hangup}/>
         </View>
     }
     if(props.localStream && props.remoteStream){
@@ -41,11 +41,11 @@ export default function Video(props: Props) {
                 streamURl={props.localStream.toURL()} 
                 objectFir={'cover'}
                 style={styles.videoLocal}/>
-            <ButtonContainer hanup={props.hanup}/>
+            <ButtonContainer hangup={props.hangup}/>
         </View>
     }
 
-  return <ButtonContainer hanup={props.hanup}/>
+  return <ButtonContainer hangup={props.hangup}/>
 }
 
 const styles = StyleSheet.create({
