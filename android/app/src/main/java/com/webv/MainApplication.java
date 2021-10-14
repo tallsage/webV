@@ -28,6 +28,10 @@ import java.util.Arrays;
 import java.util.List;
 import javax.annotation.Nullable;
 
+import io.invertase.firebase.app.ReactNativeFirebaseAppPackage;
+import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
+import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage;
+
 public class MainApplication extends Application implements ReactApplication {
   private final ReactModuleRegistryProvider mModuleRegistryProvider = new ReactModuleRegistryProvider(
     new BasePackageList().getPackageList()
@@ -39,13 +43,22 @@ public class MainApplication extends Application implements ReactApplication {
       return BuildConfig.DEBUG;
     }
 
-    @Override
-    protected List<ReactPackage> getPackages() {
-      List<ReactPackage> packages = new PackageList(this).getPackages();
-      packages.add(new ModuleRegistryAdapter(mModuleRegistryProvider));
-      return packages;
+    // @Override
+    // protected List<ReactPackage> getPackages() {
+    //   List<ReactPackage> packages = new PackageList(this).getPackages();
+    //   packages.add(new ModuleRegistryAdapter(mModuleRegistryProvider));
+    //   return packages;
+    // }
+ protected List<ReactPackage> getPackages() {
+          @SuppressWarnings("UnnecessaryLocalVariable")
+          List<ReactPackage> packages = new PackageList(this).getPackages();
+          // Packages that cannot be autolinked yet can be added manually here, for example:
+          ...
+         packages.add(new RNFirebaseMessagingPackage());
+         packages.add(new RNFirebaseNotificationsPackage());
+         return packages;
     }
-
+  };
     @Override
     protected String getJSMainModuleName() {
       return "index";
@@ -123,3 +136,4 @@ public class MainApplication extends Application implements ReactApplication {
     }
   }
 }
+
