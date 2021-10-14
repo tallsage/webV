@@ -13,7 +13,7 @@ export default class Utils {
               videoSourceId = sourceInfo.deviceId;
             }
           }
-          const stream = await mediaDevices.getUserMedia({
+          const stream = await navigator.mediaDevices.getUserMedia({
             audio: true,
             video: {
               width: 640,
@@ -24,6 +24,8 @@ export default class Utils {
             }
           })
         if( typeof stream != 'boolean') return stream;
+        let devices = await navigator.mediaDevices.enumerateDevices();   
+        console.log(devices); 
         return null;
     };
 }
